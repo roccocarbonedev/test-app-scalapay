@@ -2,9 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:test_app_scalapay/data/models/search_response.dart';
 
 class ProductService {
-  final Dio _dio = Dio();
+  Dio _dio = Dio();
   final String _baseUrl =
       'https://catalog-api.dev-cat.scalapay.com/v1/products/search';
+
+        ProductService({Dio? dio}) : _dio = dio ?? Dio();
+
 
   Future<SearchResponse> fetchProducts({
     String query = 'nike',
